@@ -8,10 +8,18 @@
 ## Structure
 ```mermaid
 flowchart TD
+    classDef presentation stroke:#f0f
     classDef api stroke:#f00
     classDef service stroke:#0f0
     classDef data stroke:#00f
 
+
+    Dashboard["Dashboard
+        [Langauge]: TypeScript
+
+        The dashboard to display
+        the Wakatime data
+        "]:::presentation
     API["API
         [Langauge]: C# / F#
 
@@ -45,6 +53,7 @@ flowchart TD
         from the database
         "]:::data
 
+    Dashboard --> API
     synchronizer --> business
     API --> business
 
