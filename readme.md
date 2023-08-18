@@ -14,6 +14,13 @@ flowchart TD
     classDef data stroke:#00f
 
 
+    common["Common
+        [Langauge]: C#
+
+        Common models and
+        services
+        "]
+        
     Dashboard["Dashboard
         [Langauge]: TypeScript
 
@@ -52,6 +59,7 @@ flowchart TD
         the Wakatime data
         from the database
         "]:::data
+
 
     Dashboard --> API
     synchronizer --> business
