@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Common.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess;
 
@@ -11,9 +12,9 @@ public class DatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-
+        optionsBuilder.UseSqlite("Data Source=database.db");
     }
 
-    public DbSet<Models.User> Users { get; set; }
+    public DbSet<Heartbeat> Heartbeats { get; set; }
     
 }
