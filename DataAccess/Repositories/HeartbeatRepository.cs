@@ -1,10 +1,10 @@
 ﻿using Common.Exceptions;
 using Common.Models;
-using DataAccess;
+using DataAccess.Repositories.Interface;
 
-namespace joerivanarkel.Wakatime;
+namespace DataAccess.Repositories;
 
-public class HeartbeatRepository
+public class HeartbeatRepository : IHeartbeatRepository
 {
     public DatabaseContext Database;
 

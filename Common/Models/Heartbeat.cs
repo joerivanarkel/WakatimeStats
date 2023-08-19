@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Common.Models.Interface;
+using Newtonsoft.Json;
 
 namespace Common.Models;
 
-public class Heartbeat
+public class Heartbeat : IEntity
 {
     public int Id { get; set; }
 
