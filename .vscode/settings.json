@@ -1,3 +1,8 @@
 {
-    "dotnet.defaultSolution": "WakatimeStats.sln"
+    "dotnet.defaultSolution": "WakatimeStats.sln",
+    "material-icon-theme.folders.associations": {
+        ".docs": "docs",
+        ".vs": "vscode",
+        "DataAccess": "database",
+    }
 }
