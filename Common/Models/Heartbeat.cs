@@ -1,4 +1,6 @@
-﻿using Common.Models.Interface;
+﻿using System.Collections;
+using System.ComponentModel.DataAnnotations.Schema;
+using Common.Models.Interface;
 using Newtonsoft.Json;
 
 namespace Common.Models;
@@ -22,7 +24,8 @@ public class Heartbeat : IEntity
     [JsonProperty("cursorpos")]
     public int Cursorpos { get; set; }
 
-    [JsonProperty("dependencies")]
+    // [JsonProperty("dependencies")]
+    [NotMapped]
     public IEnumerable<string>? Dependencies { get; set; }
 
     [JsonProperty("entity")]
