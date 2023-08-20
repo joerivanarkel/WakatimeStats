@@ -1,6 +1,8 @@
-﻿namespace Common.Exceptions;
+﻿using System.Text.Json;
 
-public class ServiceException : Exception
+namespace Common.Exceptions;
+
+public class ServiceException : BaseException
 {
     public ServiceException() { }
     public ServiceException(string message) : base(message) { }

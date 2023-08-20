@@ -12,7 +12,6 @@ builder.Logging.AddConsole();
 builder.Logging.SetMinimumLevel(LogLevel.Information);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddApiVersioning();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "API v1", Version = "v1" });
@@ -48,5 +47,7 @@ if (app.Environment.IsDevelopment())
 app.UseRouting();
 
 app.UseHttpsRedirection();
+
+app.MapControllers();
 
 app.Run();

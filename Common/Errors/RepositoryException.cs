@@ -1,6 +1,6 @@
 ﻿namespace Common.Exceptions;
 
-public class RepositoryException : Exception
+public class RepositoryException : BaseException
 {
     public RepositoryException() { }
     public RepositoryException(string message) : base(message) { }

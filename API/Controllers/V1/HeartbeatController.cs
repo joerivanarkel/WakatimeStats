@@ -1,4 +1,5 @@
 ﻿using Business.Services.Interface;
+using Common.Exceptions;
 using Common.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +8,6 @@ namespace API.Controllers.V1;
 /// <summary>
 /// The heartbeat controller
 /// </summary>
-[ApiVersion("1.0")]
 [ApiController]
 [Route("api/v1/[controller]")]
 public class HeartbeatController : BaseController
@@ -37,6 +37,11 @@ public class HeartbeatController : BaseController
             Logger.LogInformation("Getting all heartbeats");
             return Ok(HeartbeatService.GetAll()); 
         }
+        catch (BaseException ex)
+        {
+            Logger.LogError(ex, "Error getting all heartbeats");
+            return BadRequest(ex.Filter());
+        }
         catch (Exception ex)
         {
             Logger.LogError(ex, "Error getting all heartbeats");
@@ -63,6 +68,11 @@ public class HeartbeatController : BaseController
             
             return Ok(heartbeat);
             
+        }
+        catch (BaseException ex)
+        {
+            Logger.LogError(ex, $"Error getting heartbeat with id {id}");
+            return BadRequest(ex.Filter());
         }
         catch (Exception ex)
         {
@@ -92,6 +102,11 @@ public class HeartbeatController : BaseController
             HeartbeatService.Add(heartbeat);
             return CreatedAtAction(nameof(Get), new { id = heartbeat.Id }, heartbeat);
         }
+        catch (BaseException ex)
+        {
+            Logger.LogError(ex, "Error adding heartbeat");
+            return BadRequest(ex.Filter());
+        }
         catch (Exception ex)
         {
             Logger.LogError(ex, "Error adding heartbeat");
@@ -119,6 +134,11 @@ public class HeartbeatController : BaseController
 
             HeartbeatService.AddRange(heartbeats);
             return CreatedAtAction(nameof(Get), heartbeats);
+        }
+        catch (BaseException ex)
+        {
+            Logger.LogError(ex, "Error adding heartbeats");
+            return BadRequest(ex.Filter());
         }
         catch (Exception ex)
         {
@@ -156,12 +176,16 @@ public class HeartbeatController : BaseController
             HeartbeatService.Update(heartbeat);
             return NoContent();
         }
+        catch (BaseException ex)
+        {
+            Logger.LogError(ex, $"Error updating heartbeat with id {id}");
+            return BadRequest(ex.Filter());
+        }
         catch (Exception ex)
         {
             Logger.LogError(ex, $"Error updating heartbeat with id {id}");
             return BadRequest(ex.Message);
         }
-
     }
 
     /// <summary>
@@ -181,6 +205,11 @@ public class HeartbeatController : BaseController
         
             HeartbeatService.Remove(id);
             return NoContent();
+        }
+        catch (BaseException ex)
+        {
+            Logger.LogError(ex, $"Error deleting heartbeat with id {id}");
+            return BadRequest(ex.Filter());
         }
         catch (Exception ex)
         {
